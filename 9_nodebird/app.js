@@ -7,7 +7,7 @@ const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 
 dotenv.config();
-const pageRouter = require('./router/page');
+const pageRouter = require('./routes/page');
 
 const app = express();
 app.set('port', process.env.PORT || 8001);
