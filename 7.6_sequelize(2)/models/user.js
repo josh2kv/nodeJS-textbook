@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 
 // static init(db.sequelize) { 테이블에 관한 설정
 //  return super.init( {테이블 컬럼에 대한 설정} , {테이블 자체에 대한 설정} )
@@ -42,8 +42,10 @@ module.exports = class User extends Sequelize.Model {
         charset: 'utf8',
         collate: 'utf8_general_ci',
       },
-    )
+    );
   }
 
-  static associate(db) {}
-}
+  static associate(db) {
+    db.User.hasMany(db.Comment, { foreignKey: 'commenter', sourceKey: 'id' });
+  }
+};
