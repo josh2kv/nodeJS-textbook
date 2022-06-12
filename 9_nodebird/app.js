@@ -17,6 +17,15 @@ nunjucks.configure('view', {
   watch: true,
 });
 
+sequelize
+  .sync({ force: true })
+  .then(() => {
+    console.log('데이터베이스 연결성공');
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
